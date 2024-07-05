@@ -1,4 +1,4 @@
-package com.plcoding.cleanarchitecturenoteapp
+package com.learningkotlin.todoapp
 
 import org.junit.Test
 
