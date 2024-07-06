@@ -1,4 +1,4 @@
-package com.learningkotlin.todoapp
+package com.learningkotlin.todoapp.note.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
