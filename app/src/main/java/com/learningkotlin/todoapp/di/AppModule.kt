@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.learningkotlin.todoapp.note.data.repository.NoteRepositoryImpl
 import com.learningkotlin.todoapp.note.data.source.NoteDatabase
 import com.learningkotlin.todoapp.note.domain.repository.NoteRepository
+import com.learningkotlin.todoapp.note.domain.usecase.AddNote
 import com.learningkotlin.todoapp.note.domain.usecase.DeleteNote
 import com.learningkotlin.todoapp.note.domain.usecase.GetNotes
 import com.learningkotlin.todoapp.note.domain.usecase.NoteUseCases
@@ -39,7 +40,8 @@ object AppModule {
     fun provideNoteUseCases(repository: NoteRepository): NoteUseCases {
         return NoteUseCases(
             getNotes = GetNotes(repository),
-            deleteNote = DeleteNote(repository)
+            deleteNote = DeleteNote(repository),
+            addNote = AddNote(repository)
         )
     }
 }
