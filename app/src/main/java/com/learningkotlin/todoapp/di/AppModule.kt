@@ -7,6 +7,7 @@ import com.learningkotlin.todoapp.note.data.source.NoteDatabase
 import com.learningkotlin.todoapp.note.domain.repository.NoteRepository
 import com.learningkotlin.todoapp.note.domain.usecase.AddNote
 import com.learningkotlin.todoapp.note.domain.usecase.DeleteNote
+import com.learningkotlin.todoapp.note.domain.usecase.GetNote
 import com.learningkotlin.todoapp.note.domain.usecase.GetNotes
 import com.learningkotlin.todoapp.note.domain.usecase.NoteUseCases
 import dagger.Module
@@ -41,7 +42,8 @@ object AppModule {
         return NoteUseCases(
             getNotes = GetNotes(repository),
             deleteNote = DeleteNote(repository),
-            addNote = AddNote(repository)
+            addNote = AddNote(repository),
+            getNote = GetNote(repository)
         )
     }
 }
