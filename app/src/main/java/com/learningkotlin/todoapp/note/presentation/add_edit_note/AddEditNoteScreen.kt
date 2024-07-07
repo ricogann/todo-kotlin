@@ -69,7 +69,7 @@ fun AddEditNoteScreen(
                     )
                 }
                 is AddEditNoteViewModel.UiEvent.SaveNote -> {
-
+                    navController.navigateUp()
                 }
             }
         }
