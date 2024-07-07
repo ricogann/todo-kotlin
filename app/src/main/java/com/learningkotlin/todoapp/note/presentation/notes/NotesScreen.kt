@@ -38,6 +38,7 @@ import androidx.navigation.NavController
 import com.learningkotlin.todoapp.note.domain.util.NoteOrder
 import com.learningkotlin.todoapp.note.presentation.notes.component.NoteItem
 import com.learningkotlin.todoapp.note.presentation.notes.component.OrderSection
+import com.learningkotlin.todoapp.note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -53,7 +54,7 @@ fun NotesScreen(
     Scaffold (
         floatingActionButton = {
             FloatingActionButton(onClick = {
-
+                navController.navigate(Screen.AddEditNoteScreen.route)
             },
             backgroundColor = MaterialTheme.colors.primary
             ) {
@@ -86,19 +87,19 @@ fun NotesScreen(
                         contentDescription = "Sort"
                     )
                 }
-                AnimatedVisibility(
-                    visible = state.isOrderSectionVisible,
-                    enter = fadeIn() + slideInVertically(),
-                    exit = fadeOut() + slideOutVertically(),
-                ) {
-                    OrderSection(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 16.dp), noteOrder = state.noteOrder, onOrderChange = {
-                                viewModel.onEvent(NotesEvent.Order(it))
-                            }
-                    )
-                }
+            }
+            AnimatedVisibility(
+                visible = state.isOrderSectionVisible,
+                enter = fadeIn() + slideInVertically(),
+                exit = fadeOut() + slideOutVertically(),
+            ) {
+                OrderSection(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp), noteOrder = state.noteOrder, onOrderChange = {
+                        viewModel.onEvent(NotesEvent.Order(it))
+                    }
+                )
             }
             Spacer(modifier = Modifier.height(16.dp))
             LazyColumn(modifier = Modifier.fillMaxSize()) {
